@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+/* ─── Tailwind v4 theme tokens ───────────────────────────────────────────── */
+@theme {
+  /* Colors */
+  --color-background: #050508;
+  --color-accent:     #00ff88;
+  --color-surface:    #0d0d14;
+  --color-border:     #ffffff0f;
+
+  /* Fonts */
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-sans:    'DM Sans', sans-serif;
+  --font-mono:    'Space Mono', monospace;
+
+  /* Spacing extras */
+  --spacing-18:  4.5rem;
+  --spacing-22:  5.5rem;
+  --spacing-30:  7.5rem;
+  --spacing-34:  8.5rem;
+  --spacing-128: 32rem;
+  --spacing-160: 40rem;
+
+  /* Animations */
+  --animate-marquee:         marquee var(--marquee-duration, 20s) linear infinite;
+  --animate-marquee-reverse: marquee-reverse var(--marquee-duration, 20s) linear infinite;
+  --animate-fade-in:  fade-in 0.6s ease forwards;
+  --animate-slide-up: slide-up 0.6s ease forwards;
+}
+
+/* ─── Keyframes ───────────────────────────────────────────────────────────── */
+@keyframes marquee {
+  from { transform: translateX(0%); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes marquee-reverse {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0%); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Global base ─────────────────────────────────────────────────────────── */
+:root {
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: #050508;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background-color: #050508;
+  color: #ffffff;
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* ─── Hero — mesh orb drifts ─────────────────────────────────────────────── */
+@keyframes orb-drift-1 {
+  0%   { transform: translate(0px,   0px)  scale(1);    }
+  50%  { transform: translate(50px, -40px) scale(1.12); }
+  100% { transform: translate(-30px, 25px) scale(0.94); }
+}
+@keyframes orb-drift-2 {
+  0%   { transform: translate(0px,   0px)  scale(1);    }
+  50%  { transform: translate(-60px, 35px) scale(1.08); }
+  100% { transform: translate(40px, -50px) scale(0.9);  }
+}
+@keyframes orb-drift-3 {
+  0%   { transform: translate(0px,  0px)  scale(1);    }
+  50%  { transform: translate(25px, 50px) scale(1.15); }
+  100% { transform: translate(-35px,-25px) scale(0.96);}
+}
+
+/* ─── Floating geometric accents ─────────────────────────────────────────── */
+@keyframes float-gentle {
+  0%, 100% { transform: translateY(0px)  rotate(0deg);  }
+  50%       { transform: translateY(-14px) rotate(4deg); }
+}
+@keyframes float-alt {
+  0%, 100% { transform: translateY(0px) rotate(0deg);  }
+  33%       { transform: translateY(9px)  rotate(-2deg); }
+  66%       { transform: translateY(-9px) rotate(2deg);  }
+}
+
+/* ─── Available dot pulse ─────────────────────────────────────────────────── */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1;   transform: scale(1);   box-shadow: 0 0 0 0   rgba(0,255,136,0.4); }
+  50%       { opacity: 0.7; transform: scale(0.8); box-shadow: 0 0 0 6px rgba(0,255,136,0);   }
+}
+
+/* ─── Project mockup slow bob ────────────────────────────────────────────── */
+@keyframes mockup-bob {
+  0%, 100% { transform: translateY(0px)   rotate(0deg);    }
+  33%       { transform: translateY(-10px) rotate(0.4deg);  }
+  66%       { transform: translateY(5px)   rotate(-0.3deg); }
+}
+
+/* ─── Noise overlay helper ────────────────────────────────────────────────── */
+.noise-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+}
