@@ -30,7 +30,6 @@ export function HeroSection() {
     >
       {/* ── Vivid gradient orbs ─────────────────────────────────────────── */}
       <div aria-hidden className="absolute inset-0 pointer-events-none">
-        {/* Violet/blue — top left */}
         <div
           className="absolute -top-40 -left-20 w-[900px] h-[900px] rounded-full"
           style={{
@@ -39,7 +38,6 @@ export function HeroSection() {
             animation: 'orb-drift-1 22s ease-in-out infinite alternate',
           }}
         />
-        {/* Cyan/indigo — bottom right */}
         <div
           className="absolute -bottom-32 -right-20 w-[800px] h-[800px] rounded-full"
           style={{
@@ -48,7 +46,6 @@ export function HeroSection() {
             animation: 'orb-drift-2 28s ease-in-out infinite alternate',
           }}
         />
-        {/* Green accent — center right */}
         <div
           className="absolute top-[30%] right-[22%] w-[380px] h-[380px] rounded-full"
           style={{
@@ -75,62 +72,50 @@ export function HeroSection() {
       <div aria-hidden className="absolute inset-0 pointer-events-none">
         <div
           className="absolute top-[8%] right-[5%] w-36 h-36 rounded-full"
-          style={{
-            border: '1px solid rgba(124,58,237,0.25)',
-            animation: 'float-gentle 9s ease-in-out infinite',
-          }}
+          style={{ border: '1px solid rgba(124,58,237,0.25)', animation: 'float-gentle 9s ease-in-out infinite' }}
         />
         <div
           className="absolute top-[13%] right-[9.5%] w-20 h-20 rounded-full"
-          style={{
-            border: '1px solid rgba(6,182,212,0.22)',
-            animation: 'float-gentle 9s ease-in-out infinite',
-            animationDelay: '0.6s',
-          }}
+          style={{ border: '1px solid rgba(6,182,212,0.22)', animation: 'float-gentle 9s ease-in-out infinite', animationDelay: '0.6s' }}
         />
         <div
           className="absolute bottom-[22%] right-[17%] w-16 h-52"
-          style={{
-            border: '1px solid rgba(0,255,136,0.18)',
-            animation: 'float-alt 11s ease-in-out infinite',
-          }}
+          style={{ border: '1px solid rgba(0,255,136,0.18)', animation: 'float-alt 11s ease-in-out infinite' }}
         />
         <div
           className="absolute top-[38%] right-[7%] w-3 h-3 rounded-full"
-          style={{
-            background: 'rgba(124,58,237,0.75)',
-            boxShadow: '0 0 14px rgba(124,58,237,0.7)',
-            animation: 'float-gentle 6s ease-in-out infinite reverse',
-          }}
+          style={{ background: 'rgba(124,58,237,0.75)', boxShadow: '0 0 14px rgba(124,58,237,0.7)', animation: 'float-gentle 6s ease-in-out infinite reverse' }}
         />
         <div
           className="absolute top-[62%] right-[28%] w-2 h-2 rounded-full"
-          style={{
-            background: 'rgba(6,182,212,0.85)',
-            boxShadow: '0 0 10px rgba(6,182,212,0.8)',
-            animation: 'float-alt 7s ease-in-out infinite',
-          }}
+          style={{ background: 'rgba(6,182,212,0.85)', boxShadow: '0 0 10px rgba(6,182,212,0.8)', animation: 'float-alt 7s ease-in-out infinite' }}
         />
         <div
           className="absolute top-[75%] right-[10%] w-24 h-24"
-          style={{
-            border: '1px solid rgba(99,102,241,0.18)',
-            transform: 'rotate(45deg)',
-            animation: 'float-gentle 12s ease-in-out infinite',
-          }}
+          style={{ border: '1px solid rgba(99,102,241,0.18)', transform: 'rotate(45deg)', animation: 'float-gentle 12s ease-in-out infinite' }}
         />
       </div>
 
       {/* ── Main content ─────────────────────────────────────────────────── */}
-      <div className="relative z-10 flex flex-col h-full pl-[8vw] pr-[5vw] pt-20 pb-10">
+      {/*
+        Outer: flex-col, full height, horizontal padding via style so we can use max().
+        flex-shrink-0 nav spacer at top pushes the flex-1 zone below the fixed nav.
+        The flex-1 zone uses items-center to vertically center the content row.
+      */}
+      <div
+        className="relative z-10 flex flex-col h-full"
+        style={{ paddingLeft: 'max(8vw, 120px)', paddingRight: '5vw' }}
+      >
+        {/* Nav clearance spacer */}
+        <div className="flex-shrink-0" style={{ height: '72px' }} />
 
-        {/* Center row: text left, visual right */}
-        <div className="flex flex-1 items-center gap-8 lg:gap-12">
+        {/* Vertically centered content row */}
+        <div className="flex flex-1 items-center gap-8 lg:gap-16">
 
-          {/* Left column */}
-          <div className="flex flex-col min-w-0" style={{ maxWidth: 'min(54vw, 700px)' }}>
+          {/* ── Left column — all text ── */}
+          <div className="flex flex-col" style={{ maxWidth: 'min(52vw, 680px)' }}>
 
-            {/* Available badge — glassmorphism pill */}
+            {/* Available for Work badge */}
             <motion.div
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
@@ -155,7 +140,7 @@ export function HeroSection() {
               </div>
             </motion.div>
 
-            {/* Heading */}
+            {/* Name heading */}
             <h1 className="font-display leading-[0.88] tracking-tight select-none">
               {WORDS.map((word, i) => (
                 <div key={word} className="overflow-hidden">
@@ -175,18 +160,18 @@ export function HeroSection() {
               initial={{ scaleX: 0, opacity: 0 }}
               animate={{ scaleX: 1, opacity: 1 }}
               transition={{ duration: 0.9, delay: 1.05, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-5 h-[2px] w-52 origin-left"
+              className="mt-6 h-[2px] w-52 origin-left"
               style={{
                 background: 'linear-gradient(to right, #00ff88, #3b82f6, rgba(99,102,241,0))',
               }}
             />
 
-            {/* Subtitles */}
+            {/* Subtitle */}
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-7 mb-14 space-y-3 max-w-lg"
+              className="mt-8 mb-12 space-y-3 max-w-lg"
             >
               <p className="font-sans font-semibold text-xl text-white/90 tracking-tight">
                 Frontend &amp; Web3 Engineer
@@ -212,10 +197,9 @@ export function HeroSection() {
             </motion.div>
           </div>
 
-          {/* Right column — decorative orb rings */}
+          {/* ── Right column — decorative orb rings ── */}
           <div className="hidden lg:flex flex-1 items-center justify-center pointer-events-none select-none">
             <div className="relative w-[380px] h-[380px]">
-              {/* Outer glow blob */}
               <div
                 className="absolute inset-[-20%] rounded-full"
                 style={{
@@ -224,28 +208,15 @@ export function HeroSection() {
                   animation: 'orb-drift-3 16s ease-in-out infinite alternate',
                 }}
               />
-              {/* Outer ring */}
-              <div
-                className="absolute inset-0 rounded-full"
-                style={{ border: '1px solid rgba(255,255,255,0.07)' }}
-              />
-              {/* Mid ring — slow spin */}
+              <div className="absolute inset-0 rounded-full" style={{ border: '1px solid rgba(255,255,255,0.07)' }} />
               <div
                 className="absolute inset-[14%] rounded-full"
-                style={{
-                  border: '1px solid rgba(124,58,237,0.25)',
-                  animation: 'spin-slow 30s linear infinite',
-                }}
+                style={{ border: '1px solid rgba(124,58,237,0.25)', animation: 'spin-slow 30s linear infinite' }}
               />
-              {/* Inner ring — reverse spin */}
               <div
                 className="absolute inset-[30%] rounded-full"
-                style={{
-                  border: '1px solid rgba(0,255,136,0.28)',
-                  animation: 'spin-slow-reverse 20s linear infinite',
-                }}
+                style={{ border: '1px solid rgba(0,255,136,0.28)', animation: 'spin-slow-reverse 20s linear infinite' }}
               />
-              {/* Innermost fill */}
               <div
                 className="absolute inset-[45%] rounded-full"
                 style={{
@@ -254,46 +225,35 @@ export function HeroSection() {
                   animation: 'pulse-dot 3.5s ease-in-out infinite',
                 }}
               />
-              {/* Orbiting violet dot */}
               <div
                 className="absolute top-[8%] left-[50%] -translate-x-1/2 w-3 h-3 rounded-full"
-                style={{
-                  background: 'rgba(124,58,237,0.9)',
-                  boxShadow: '0 0 12px rgba(124,58,237,0.8)',
-                }}
+                style={{ background: 'rgba(124,58,237,0.9)', boxShadow: '0 0 12px rgba(124,58,237,0.8)' }}
               />
-              {/* Orbiting cyan dot */}
               <div
                 className="absolute bottom-[10%] right-[18%] w-2.5 h-2.5 rounded-full"
-                style={{
-                  background: 'rgba(6,182,212,0.95)',
-                  boxShadow: '0 0 12px rgba(6,182,212,0.85)',
-                }}
+                style={{ background: 'rgba(6,182,212,0.95)', boxShadow: '0 0 12px rgba(6,182,212,0.85)' }}
               />
-              {/* Orbiting blue dot */}
               <div
                 className="absolute top-[50%] right-[4%] -translate-y-1/2 w-2 h-2 rounded-full"
-                style={{
-                  background: 'rgba(59,130,246,0.9)',
-                  boxShadow: '0 0 10px rgba(59,130,246,0.8)',
-                }}
+                style={{ background: 'rgba(59,130,246,0.9)', boxShadow: '0 0 10px rgba(59,130,246,0.8)' }}
               />
             </div>
           </div>
         </div>
 
-        {/* Bottom: scroll label */}
-        <div className="flex justify-end">
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1.6 }}
-            className="font-mono text-[10px] tracking-[0.35em] text-white/25 uppercase select-none"
-            style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}
-          >
-            Scroll to Explore →
-          </motion.p>
-        </div>
+        {/* ── Scroll cue — bottom center, absolute ── */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 1.8 }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none select-none"
+        >
+          <span className="font-mono text-[9px] tracking-[0.3em] text-white/30 uppercase">Scroll</span>
+          <div
+            className="w-px h-10"
+            style={{ background: 'linear-gradient(to bottom, rgba(255,255,255,0.3), transparent)' }}
+          />
+        </motion.div>
       </div>
     </section>
   )
