@@ -79,10 +79,6 @@ export function HeroSection() {
           style={{ border: '1px solid rgba(6,182,212,0.22)', animation: 'float-gentle 9s ease-in-out infinite', animationDelay: '0.6s' }}
         />
         <div
-          className="absolute bottom-[22%] right-[17%] w-16 h-52"
-          style={{ border: '1px solid rgba(0,255,136,0.18)', animation: 'float-alt 11s ease-in-out infinite' }}
-        />
-        <div
           className="absolute top-[38%] right-[7%] w-3 h-3 rounded-full"
           style={{ background: 'rgba(124,58,237,0.75)', boxShadow: '0 0 14px rgba(124,58,237,0.7)', animation: 'float-gentle 6s ease-in-out infinite reverse' }}
         />
@@ -113,7 +109,7 @@ export function HeroSection() {
         <div className="flex flex-1 items-center gap-8 lg:gap-16">
 
           {/* ── Left column — all text ── */}
-          <div className="flex flex-col" style={{ maxWidth: 'min(52vw, 680px)' }}>
+          <div className="flex flex-col" style={{ maxWidth: 'min(58vw, 760px)' }}>
 
             {/* Available for Work badge */}
             <motion.div
@@ -140,14 +136,14 @@ export function HeroSection() {
               </div>
             </motion.div>
 
-            {/* Name heading */}
+            {/* Name heading — 20% larger than previous */}
             <h1 className="font-display leading-[0.88] tracking-tight select-none">
               {WORDS.map((word, i) => (
                 <div key={word} className="overflow-hidden">
                   <span
                     data-word=""
                     className={`block ${i === 1 ? 'text-accent' : 'text-white'}`}
-                    style={{ fontSize: 'clamp(52px, 9vw, 136px)' }}
+                    style={{ fontSize: 'clamp(62px, 10.8vw, 163px)' }}
                   >
                     {word}
                   </span>
@@ -173,17 +169,17 @@ export function HeroSection() {
               transition={{ duration: 0.7, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
               className="mt-8 mb-12 space-y-3 max-w-lg"
             >
-              <p className="font-sans font-semibold text-xl text-white/90 tracking-tight">
-                Frontend &amp; Web3 Engineer
+              <p className="font-sans font-light text-lg text-white/80 tracking-[0.08em]">
+                Frontend Engineer
               </p>
-              <p className="font-sans text-base leading-relaxed text-white/45">
+              <p className="font-sans text-base leading-relaxed text-white/45 tracking-[0.03em]">
                 Building scalable SaaS platforms, trading systems and blockchain applications.
               </p>
             </motion.div>
 
             {/* CTA buttons */}
             <motion.div
-              className="flex items-center gap-5"
+              className="flex items-center gap-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1.1, ease: [0.22, 1, 0.36, 1] }}

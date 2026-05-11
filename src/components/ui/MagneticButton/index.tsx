@@ -44,10 +44,10 @@ export function MagneticButton({
   }
 
   const classes = clsx(
-    'inline-flex items-center justify-center px-8 py-4 rounded-full font-sans font-medium text-[18px] transition-all duration-200 select-none cursor-pointer',
+    'inline-flex items-center justify-center h-[52px] px-10 rounded-full font-sans font-medium text-[15px] tracking-[0.05em] transition-all duration-300 select-none cursor-pointer',
     variant === 'primary'
-      ? 'bg-accent text-background hover:bg-accent/90 hover:shadow-[0_0_36px_rgba(0,255,136,0.5)]'
-      : 'border border-white/30 text-white hover:border-white/60 hover:bg-white/5',
+      ? 'bg-accent text-background hover:bg-accent/90 hover:shadow-[0_0_30px_rgba(0,255,136,0.4)]'
+      : 'border border-white/40 text-white hover:border-white',
     className,
   )
 
