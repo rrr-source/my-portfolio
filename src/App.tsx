@@ -53,6 +53,13 @@ export default function App() {
     return () => clearTimeout(t)
   }, [])
 
+  // ── Disable middle-mouse auto-scroll ──────────────────────────────────────
+  useEffect(() => {
+    const block = (e: MouseEvent) => { if (e.button === 1) e.preventDefault() }
+    window.addEventListener('mousedown', block)
+    return () => window.removeEventListener('mousedown', block)
+  }, [])
+
   // ── Track active section & nav backdrop ───────────────────────────────────
   useEffect(() => {
     return scrollYProgress.on('change', (p) => {
@@ -100,11 +107,11 @@ export default function App() {
         <nav
           className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-5 transition-all duration-300"
           style={{
-            backdropFilter: navScrolled ? 'blur(20px)' : 'none',
+            backdropFilter: navScrolled ? 'blur(20px)' : 'blur(8px)',
             borderBottom: navScrolled
               ? '1px solid rgba(255,255,255,0.06)'
-              : '1px solid transparent',
-            background: navScrolled ? 'rgba(5,5,8,0.7)' : 'transparent',
+              : '1px solid rgba(255,255,255,0.03)',
+            background: navScrolled ? 'rgba(5,5,8,0.75)' : 'rgba(5,5,8,0.2)',
           }}
         >
           {/* Logo */}

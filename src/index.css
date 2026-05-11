@@ -67,6 +67,12 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
 }
 
 body {
@@ -108,6 +114,20 @@ body::-webkit-scrollbar {
   0%, 100% { transform: translateY(0px) rotate(0deg);  }
   33%       { transform: translateY(9px)  rotate(-2deg); }
   66%       { transform: translateY(-9px) rotate(2deg);  }
+}
+
+/* ─── Right-side orb slow spin ───────────────────────────────────────────── */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes spin-slow-reverse {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(-360deg); }
+}
+@keyframes accent-line-in {
+  from { transform: scaleX(0); opacity: 0; }
+  to   { transform: scaleX(1); opacity: 1; }
 }
 
 /* ─── Available dot pulse ─────────────────────────────────────────────────── */
